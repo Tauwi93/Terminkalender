@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Show Customer</title>
+</h:head>
+
+<h:body>
+    <h1><h:outputLabel value="Reservierung"/></h1>
+    <h2><h:outputLabel value="Reservation erfolgreich"/></h2>
+    <p:panelGrid id="grid" columns="2">
+        <h:outputText value="Datum:"/>
+        <p:calendar value="#{terminkalender.date}"/>
+
+        <p:outputLabel value="Zeit von:"/>
+        <p:outputLabel value="#{terminkalender.von}"/>
+
+        <p:outputLabel value="Zeit bis:"/>
+        <p:outputLabel value="#{terminkalender.bis}"/>
+
+        <p:outputLabel value="Zimmer:"/>
+        <p:outputLabel value="#{terminkalender.zimmer}"/>
+
+        <p:outputLabel value="Bemerkung"/>
+        <p:outputLabel value="#{terminkalender.bemerkung}"/>
+
+        <p:outputLabel value="Liste"/>
+        <p:outputLabel
+                value="#{terminkalender.liste}"/>
+    </p:panelGrid>
+</h:body>
+
+</html>

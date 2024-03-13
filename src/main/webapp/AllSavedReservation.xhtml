@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>All Saved Reservations</title>
+</h:head>
+
+<h:body>
+    <h1><p:outputLabel value="Alle gespeicherten Reservierungen"/></h1>
+
+    <p:dataTable value="#{terminkalender.reservations}" var="reservation">
+        <p:column headerText="Datum">
+            <p:outputLabel value="#{reservation.date}" />
+        </p:column>
+        <p:column headerText="Zeit von">
+            <p:outputLabel value="#{reservation.von}" />
+        </p:column>
+        <p:column headerText="Zeit bis">
+            <p:outputLabel value="#{reservation.bis}" />
+        </p:column>
+        <p:column headerText="Zimmer">
+            <p:outputLabel value="#{reservation.zimmer}" />
+        </p:column>
+        <p:column headerText="Bemerkung">
+            <p:outputLabel value="#{reservation.bemerkung}" />
+        </p:column>
+        <p:column headerText="Liste">
+            <p:outputLabel value="#{reservation.liste}" />
+        </p:column>
+    </p:dataTable>
+</h:body>
+
+</html>
