@@ -18,6 +18,8 @@ public class Reservation implements Serializable {
     private int zimmer;
     private String bemerkung;
     private String liste;
+    private String privateCode;
+    private String publicCode;
 
     public Reservation(String date, String von, String bis, int zimmer, String bemerkung, String liste) {
         this.date = parseDate(date);
@@ -26,6 +28,8 @@ public class Reservation implements Serializable {
         this.zimmer = zimmer;
         this.bemerkung = bemerkung;
         this.liste = liste;
+        this.privateCode = KeyGenerator.generatePublicCode();
+        this.publicCode = KeyGenerator.generatePrivateCode();
 
 
         saveToFile(this);
@@ -88,7 +92,7 @@ public class Reservation implements Serializable {
         return date == null || date.trim().isEmpty() ||
                 von == null || von.trim().isEmpty() ||
                 bis == null || bis.trim().isEmpty() ||
-                zimmer <= 0 ||  // Annahme: Zimmernummern müssen positiv sein
+                zimmer <= 0 ||
                 bemerkung == null || bemerkung.trim().isEmpty() ||
                 liste == null || liste.trim().isEmpty();
     }
@@ -139,6 +143,23 @@ public class Reservation implements Serializable {
     public String getListe(){
         return liste;
     }
+
+    public void setPublicCode(String publicCode) {
+        this.publicCode = publicCode;
+    }
+
+    public String getPublicCode() {
+        return publicCode;
+    }
+
+    public void setPrivateCode(String privateCode) {
+        this.privateCode = privateCode;
+    }
+
+    public String getPrivateCode() {
+        return privateCode;
+    }
+
 }
 
 

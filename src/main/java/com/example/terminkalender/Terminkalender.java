@@ -6,13 +6,9 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 
 @ManagedBean
@@ -24,6 +20,8 @@ public class Terminkalender implements Serializable {
     private int zimmer;
     private String bemerkung;
     private String liste;
+    private String publicCode;
+    private String privateCode;
 
 
 
@@ -74,6 +72,24 @@ public class Terminkalender implements Serializable {
     public void setListe(String liste) { this.liste = liste;
     }
 
+    public String getPublicCode(){
+        return publicCode;
+    }
+
+    public void setPublicCode(String publicCode){
+        this.publicCode = publicCode;
+    }
+
+    public String getPrivateCode(){
+        return privateCode;
+    }
+
+    public void setPrivateCode(String privateCode){
+        this.privateCode = privateCode;
+    }
+
+
+
     public String next() {
         return "/editReservation.xhtml";
     }
@@ -83,6 +99,9 @@ public class Terminkalender implements Serializable {
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Bitte füllen Sie alle Felder aus."));
             return null;
         }
+        this.publicCode = KeyGenerator.generatePublicCode();
+        this.privateCode = KeyGenerator.generatePrivateCode();
+
         Reservation newReservation = new  Reservation();
         newReservation.setDate(date);
         newReservation.setVon(von);
@@ -90,6 +109,8 @@ public class Terminkalender implements Serializable {
         newReservation.setZimmer(zimmer);
         newReservation.setBemerkung(bemerkung);
         newReservation.setliste(liste);
+        newReservation.setPublicCode(publicCode);
+        newReservation.setPrivateCode(privateCode);
 
         ReservationDatabase.addReservation(newReservation);
 
@@ -98,7 +119,6 @@ public class Terminkalender implements Serializable {
         return "/showReservation.xhtml?faces-redirect=true";
     }
     private boolean isAnyFieldEmpty() {
-        // Check if any of the required fields is empty
         return StringUtils.isEmpty(getVon())
                 || StringUtils.isEmpty(getBis())
                 || getZimmer() == 0

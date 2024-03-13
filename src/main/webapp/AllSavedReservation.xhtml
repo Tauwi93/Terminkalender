@@ -17,7 +17,7 @@
 
     <p:dataTable value="#{terminkalender.reservations}" var="reservation">
         <p:column headerText="Datum">
-            <p:outputLabel value="#{reservation.date}" />
+            <p:calendar value="#{reservation.date}" />
         </p:column>
         <p:column headerText="Zeit von">
             <p:outputLabel value="#{reservation.von}" />
@@ -33,6 +33,12 @@
         </p:column>
         <p:column headerText="Liste">
             <p:outputLabel value="#{reservation.liste}" />
+        </p:column>
+        <p:column headerText="EinladungsCode">
+            <p:outputLabel value="#{reservation.publicCode}"/>
+        </p:column>
+        <p:column headerText="TerminaenderungCode">
+            <p:outputLabel value="#{reservation.privateCode}"/>
         </p:column>
     </p:dataTable>
 </h:body>
