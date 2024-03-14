@@ -1,46 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-    <title>Show Customer</title>
+    <title>Reservation Details</title>
+    <h:outputStylesheet library="primefaces" />
 </h:head>
+<h:body style="background-color: #f5f5f5;">  <div class="container" style="text-align: left; margin: 0 auto; max-width: 700px;">
+    <h1><h:outputLabel value="Ihre Reservierung" style="font-size: 2em; font-weight: bold; color: #333;" /></h1>
+    <h2><h:outputLabel value="Ihre Reservierung war erfolgreich!" style="color: #4CAF50;" /></h2>
 
-<h:body>
-    <h1><h:outputLabel value="Reservierung"/></h1>
-    <h2><h:outputLabel value="Reservation erfolgreich"/></h2>
-    <p:panelGrid id="grid" columns="2">
-        <h:outputText value="Datum:"/>
-        <p:calendar value="#{terminkalender.date}"/>
+    <p:panelGrid id="grid" columns="2" styleClass="reservation-details">
+        <h:outputText value="Datum:" />
+        <p:outputLabel value="#{terminkalender.date}" />
 
-        <p:outputLabel value="Zeit von:"/>
-        <p:outputLabel value="#{terminkalender.von}"/>
+        <h:outputLabel value="Zeit von:" />
+        <p:outputLabel value="#{terminkalender.von}" />
 
-        <p:outputLabel value="Zeit bis:"/>
-        <p:outputLabel value="#{terminkalender.bis}"/>
+        <h:outputLabel value="Zeit bis:" />
+        <p:outputLabel value="#{terminkalender.bis}" />
 
-        <p:outputLabel value="Zimmer:"/>
-        <p:outputLabel value="#{terminkalender.zimmer}"/>
+        <h:outputLabel value="Zimmer:" />
+        <p:outputLabel value="#{terminkalender.zimmer}" />
 
-        <p:outputLabel value="Bemerkung"/>
-        <p:outputLabel value="#{terminkalender.bemerkung}"/>
+        <h:outputLabel value="Bemerkung" />
+        <p:outputLabel value="#{terminkalender.bemerkung}" />
 
-        <p:outputLabel value="Liste"/>
-        <p:outputLabel value="#{terminkalender.liste}"/>
+        <h:outputLabel value="Liste" />
+        <p:outputLabel value="#{terminkalender.liste}" />
 
-        <p:outputLabel value="EinladungsCode"/>
-        <p:outputLabel value="#{terminkalender.publicCode}"/>
+        <h:outputLabel value="Einladungscode" />
+        <p:outputLabel value="#{terminkalender.publicCode}" />
 
-        <p:outputLabel value="TerminaenderungCode"/>
-        <p:outputLabel value="#{terminkalender.privateCode}"/>
-
+        <h:outputLabel value="Terminänderungscode" />
+        <p:outputLabel value="#{terminkalender.privateCode}" />
     </p:panelGrid>
+</div>
 </h:body>
-
 </html>
+

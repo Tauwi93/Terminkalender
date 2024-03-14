@@ -1,59 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
-
 <h:head>
-    <title>Reservierung</title>
+    <title>Reservation erfassen</title>
+    <h:outputStylesheet library="primefaces"/>
 </h:head>
-
-<h:body>
-    <h1><h:outputLabel value="Reservierung erfassen"/></h1>
-    <h2><h:outputLabel value="Bitte keine leeren Felder auslassen"/></h2>
+<h:body style="background-color: #f5f5f5;">  <div class="container" style="max-width: 700px; margin: 0 auto;">
+    <h1><h:outputLabel value="Neue Reservierung" style="font-size: 2em; font-weight: bold; color: #333;" /></h1>
+    <h2><h:outputLabel value="Bitte füllen Sie alle Felder aus." style="color: #666;" /></h2>
 
     <h:form id="form">
-        <p:panelGrid id="grid" columns="2">
-            <p:outputLabel for="button" value="Date:"/>
-            <p:calendar id="button" value="#{terminkalender.date}" required="true" showOn="button"/>
+        <p:panelGrid id="grid" columns="2" styleClass="reservation-form">
+            <p:outputLabel for="date" value="Datum*:" />
+            <p:calendar id="date" value="#{terminkalender.date}" required="true" showOn="button" />
 
-            <h:outputLabel value="Zeit von*:" for="von"/>
-            <p:inputText id="von" value="#{terminkalender.von}" required="true"/>
+            <p:outputLabel for="von" value="Zeit von*:" />
+            <p:inputText id="von" value="#{terminkalender.von}" required="true" />
 
-            <h:outputLabel value="bis zu*:" for="bis"/>
-            <p:inputText id="bis" value="#{terminkalender.bis}" required="true"/>
+            <p:outputLabel for="bis" value="bis zu*:" />
+            <p:inputText id="bis" value="#{terminkalender.bis}" required="true" />
 
-            <p:outputLabel value="Zimmer*:" for="zimmer"/>
+            <p:outputLabel for="zimmer" value="Zimmer*:" />
             <p:selectOneMenu id="zimmer" value="#{terminkalender.zimmer}" required="true">
-                <f:selectItem itemValue="101" itemLabel="101"/>
-                <f:selectItem itemValue="102" itemLabel="102"/>
-                <f:selectItem itemValue="103" itemLabel="103"/>
-                <f:selectItem itemValue="104" itemLabel="104"/>
-                <f:selectItem itemValue="105" itemLabel="105"/>
+                <f:selectItem itemValue="101" itemLabel="101" />
+                <f:selectItem itemValue="102" itemLabel="102" />
+                <f:selectItem itemValue="103" itemLabel="103" />
+                <f:selectItem itemValue="104" itemLabel="104" />
+                <f:selectItem itemValue="105" itemLabel="105" />
             </p:selectOneMenu>
 
-            <p:outputLabel value="Bemerkung*:" for="bemerkung"/>
-            <p:inputTextarea id="bemerkung" value="#{terminkalender.bemerkung}" required="true"/>
+            <p:outputLabel for="bemerkung" value="Bemerkung*:" />
+            <p:inputTextarea id="bemerkung" value="#{terminkalender.bemerkung}" required="true"  rows="4" />  <p:outputLabel for="liste" value="Liste von Teilnehmer*innen:" />
+            <p:inputTextarea id="liste" value="#{terminkalender.liste}" required="true" rows="4" />  </p:panelGrid>
+        <p:commandButton value="Speichern" action="#{terminkalender.save}" style="float: right;"/>
 
-            <p:outputLabel value="Liste von Teilnehmer*:" for="liste"/>
-            <p:inputTextarea id="liste" value="#{terminkalender.liste}" required="true"/>
-        </p:panelGrid>
-        <p:commandButton value="Save" action="#{terminkalender.save}"/>
-        <p:message for="button" style="color:red; display:flex; align-items: center; justify-content: center"/>
-        <p:message for="von" style="color:red; display:flex; align-items: center; justify-content: center"/>
-        <p:message for="bis" style="color:red; display:flex; align-items: center; justify-content: center"/>
-        <p:message for="zimmer" style="color:red; display:flex; align-items: center; justify-content: center"/>
-        <p:message for="bemerkung" style="color:red; display:flex; align-items: center; justify-content: center"/>
-        <p:message for="liste" style="color:red; display:flex; align-items: center; justify-content: center"/>
+        <p:messages id="messages" for="form" autoUpdate="true" redisplay="true" showDetail="true" globalOnly="true" />
     </h:form>
 
+</div>
 </h:body>
-
 </html>
+
 

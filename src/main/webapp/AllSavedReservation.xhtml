@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<!DOCTYPE html
-        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-
 <h:head>
-    <title>All Saved Reservations</title>
+    <title>Alle gespeicherten Reservierungen</title>
+    <h:outputStylesheet library="primefaces"/>
 </h:head>
+<h:body style="background-color: #f5f5f5;">  <div class="container" style="margin: 0 auto; max-width: 1500px;">
+    <h1><h:outputLabel value="Ihre gespeicherten Reservierungen" style="font-size: 2em; font-weight: bold; color: #333;" /></h1>
 
-<h:body>
-    <h1><p:outputLabel value="Alle gespeicherten Reservierungen"/></h1>
-
-    <p:dataTable value="#{terminkalender.reservations}" var="reservation">
+    <p:dataTable value="#{terminkalender.reservations}" var="reservation" styleClass="reservation-table">
         <p:column headerText="Datum">
-            <p:calendar value="#{reservation.date}" />
+            <p:calendar value="#{reservation.date}" disabled="true" />
         </p:column>
         <p:column headerText="Zeit von">
             <p:outputLabel value="#{reservation.von}" />
@@ -31,16 +27,16 @@
         <p:column headerText="Bemerkung">
             <p:outputLabel value="#{reservation.bemerkung}" />
         </p:column>
-        <p:column headerText="Liste">
+        <p:column headerText="Teilnehmerliste">
             <p:outputLabel value="#{reservation.liste}" />
         </p:column>
-        <p:column headerText="EinladungsCode">
-            <p:outputLabel value="#{reservation.publicCode}"/>
+        <p:column headerText="Einladungscode">
+            <p:outputLabel value="#{reservation.publicCode}" />
         </p:column>
-        <p:column headerText="TerminaenderungCode">
-            <p:outputLabel value="#{reservation.privateCode}"/>
+        <p:column headerText="Terminaenderungscode">
+            <p:outputLabel value="#{reservation.privateCode}" />
         </p:column>
     </p:dataTable>
+</div>
 </h:body>
-
 </html>
